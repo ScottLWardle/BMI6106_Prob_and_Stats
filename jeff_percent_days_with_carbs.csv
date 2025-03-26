@@ -1,0 +1,6 @@
+TimeRange,PercentDaysWithCarbs
+Afternoon (2-5 PM),80.0
+Evening (5-10 PM),90.0
+Midday (10 AM - 2 PM),93.33333333333333
+Morning (5-10 AM),63.33333333333333
+Other,6.666666666666667
