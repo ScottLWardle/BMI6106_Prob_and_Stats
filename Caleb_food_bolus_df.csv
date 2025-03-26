@@ -1,0 +1,125 @@
+BG,EventDate,RoundedTime,Type,BolusType,BolusDeliveryMethod,BGEvent,InsulinDelivered,FoodDelivered,CorrectionDelivered,CompletionStatusDesc,CarbSize,Target,CorrectionFactor,CarbRatio,DayType,Holiday,EventTimeTimePart,SchoolHours,MinTarget,MaxTarget,InTarget
+126,2024-11-21,1900-01-01 06:00:00,Bolus,Food,Standard,0.0,13.6,13.6,0.0,Completed,60.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 06:00:00,NotAtSchool,70,150,Yes
+204,2024-11-21,1900-01-01 17:05:00,Bolus,Food,Standard,208.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 17:05:00,NotAtSchool,70,150,No
+251,2024-11-22,1900-01-01 07:15:00,Bolus,Food / Correction,Standard,251.0,15.3,12.5,2.82,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 07:15:00,NotAtSchool,70,150,No
+213,2024-11-22,1900-01-01 18:30:00,Bolus,Food / Correction,Standard,213.0,16.3,12.4,3.84,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 18:30:00,NotAtSchool,70,150,No
+275,2024-11-23,1900-01-01 17:05:00,Bolus,Food,Standard,275.0,17.5,17.5,0.0,Completed,70.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 17:05:00,NotAtSchool,70,150,No
+264,2024-11-23,1900-01-01 19:45:00,Bolus,Food,Standard,0.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 19:45:00,NotAtSchool,70,150,No
+227,2024-11-23,1900-01-01 20:35:00,Bolus,Food,Standard,223.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 20:35:00,NotAtSchool,70,150,No
+171,2024-11-24,1900-01-01 23:25:00,Bolus,Food / Correction,Standard,173.0,12.6,9.99,2.65,Completed,40.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 23:25:00,NotAtSchool,70,150,No
+214,2024-11-26,1900-01-01 01:45:00,Bolus,Food,Standard,218.0,2.26,2.26,0.0,Completed,10.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 01:45:00,NotAtSchool,70,150,No
+206,2024-11-27,1900-01-01 12:50:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,19.0,4.0,Weekday,Holiday,0 days 12:50:00,NotAtSchool,70,150,No
+178,2024-11-28,1900-01-01 15:45:00,Bolus,Food,Standard,171.0,20.0,20.0,0.0,Completed,100.0,110.0,19.0,4.0,Weekday,Holiday,0 days 15:45:00,NotAtSchool,70,150,No
+136,2024-11-28,1900-01-01 17:10:00,Bolus,Food,Standard,136.0,12.4,12.4,0.0,Completed,50.0,110.0,19.0,4.0,Weekday,Holiday,0 days 17:10:00,NotAtSchool,70,150,Yes
+136,2024-11-29,1900-01-01 11:40:00,Bolus,Food / Correction,Standard,136.0,16.3,15.0,1.34,Completed,60.0,110.0,19.0,4.0,Weekday,Holiday,0 days 11:40:00,NotAtSchool,70,150,Yes
+194,2024-11-30,1900-01-01 10:40:00,Bolus,Food,Standard,205.0,10.0,10.0,0.0,Completed,40.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 10:40:00,NotAtSchool,70,150,No
+153,2024-11-30,1900-01-01 11:25:00,Bolus,Food,Standard,160.0,10.0,10.0,0.0,Completed,40.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 11:25:00,NotAtSchool,70,150,No
+275,2024-11-30,1900-01-01 17:15:00,Bolus,Food,Standard,259.0,20.0,20.0,0.0,Completed,100.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 17:15:00,NotAtSchool,70,150,No
+233,2024-12-02,1900-01-01 18:25:00,Bolus,Food,Standard,233.0,15.0,15.0,0.0,Completed,60.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 18:25:00,NotAtSchool,70,150,No
+249,2024-12-04,1900-01-01 06:20:00,Bolus,Food / Correction,Standard,222.0,16.9,13.6,3.29,Completed,60.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 06:20:00,NotAtSchool,70,150,No
+151,2024-12-04,1900-01-01 15:15:00,Bolus,Food,Standard,153.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 15:15:00,NotAtSchool,70,150,No
+215,2024-12-05,1900-01-01 00:55:00,Bolus,Food,Standard,218.0,2.73,2.73,0.0,Completed,12.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 00:55:00,NotAtSchool,70,150,No
+220,2024-12-05,1900-01-01 06:15:00,Bolus,Food,Standard,220.0,13.6,13.6,0.0,Completed,60.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 06:15:00,NotAtSchool,70,150,No
+269,2024-12-05,1900-01-01 14:45:00,Bolus,Food,Standard,269.0,10.0,10.0,0.0,Completed,40.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 14:45:00,NotAtSchool,70,150,No
+215,2024-12-06,1900-01-01 18:45:00,Bolus,Food,Standard,215.0,20.0,20.0,0.0,Completed,100.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 18:45:00,NotAtSchool,70,150,No
+134,2024-12-08,1900-01-01 08:55:00,Bolus,Food,Standard,134.0,17.5,17.5,0.0,Completed,70.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 08:55:00,NotAtSchool,70,150,Yes
+133,2024-12-09,1900-01-01 12:25:00,Bolus,Food,Standard,128.0,17.5,17.5,0.0,Completed,70.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 12:25:00,AtSchool,70,150,Yes
+155,2024-12-11,1900-01-01 06:50:00,Bolus,Food,Standard,150.0,6.82,6.82,0.0,Completed,30.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 06:50:00,NotAtSchool,70,150,No
+293,2024-12-11,1900-01-01 13:30:00,Bolus,Food,Standard,0.0,12.4,12.4,0.0,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 13:30:00,AtSchool,70,150,No
+226,2024-12-11,1900-01-01 18:10:00,Bolus,Food,Standard,227.0,20.0,20.0,0.0,Completed,80.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 18:10:00,NotAtSchool,70,150,No
+269,2024-12-12,1900-01-01 06:35:00,Bolus,Food,Standard,0.0,13.6,13.6,0.0,Completed,60.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 06:35:00,NotAtSchool,70,150,No
+208,2024-12-12,1900-01-01 20:30:00,Bolus,Food,Standard,208.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 20:30:00,NotAtSchool,70,150,No
+278,2024-12-13,1900-01-01 01:50:00,Bolus,Food / Correction,Standard,278.0,4.13,3.41,0.71,Completed,15.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 01:50:00,NotAtSchool,70,150,No
+111,2024-12-13,1900-01-01 11:40:00,Bolus,Food,Standard,109.0,2.29,2.29,0.0,Completed,40.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 11:40:00,AtSchool,70,150,Yes
+207,2024-12-13,1900-01-01 15:10:00,Bolus,Food,Standard,0.0,7.5,7.5,0.0,Completed,30.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 15:10:00,NotAtSchool,70,150,No
+316,2024-12-13,1900-01-01 19:40:00,Bolus,Food / Correction,Standard,316.0,19.4,10.0,9.45,Completed,40.0,110.0,19.0,4.0,Weekday,Not Holiday,0 days 19:40:00,NotAtSchool,70,150,No
+165,2024-12-14,1900-01-01 09:30:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 09:30:00,NotAtSchool,70,150,No
+145,2024-12-15,1900-01-01 10:45:00,Bolus,Food,Standard,142.0,12.5,12.5,0.0,Completed,50.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 10:45:00,NotAtSchool,70,150,Yes
+401,2024-12-15,1900-01-01 19:40:00,Bolus,Food,Standard,259.0,0.25,0.25,0.0,Completed,1.0,110.0,19.0,4.0,Weekend,Not Holiday,0 days 19:40:00,NotAtSchool,70,150,No
+208,2024-12-17,1900-01-01 00:55:00,Bolus,Food,Standard,208.0,3.41,3.41,0.0,Completed,15.0,110.0,22.0,4.4,Weekday,Not Holiday,0 days 00:55:00,NotAtSchool,70,150,No
+249,2024-12-18,1900-01-01 10:50:00,Bolus,Food / Correction,Standard,249.0,10.7,7.49,3.3,Completed,30.0,110.0,17.0,4.0,Weekday,Holiday,0 days 10:50:00,NotAtSchool,70,150,No
+283,2024-12-18,1900-01-01 12:40:00,Bolus,Food,Standard,283.0,11.2,11.2,0.0,Completed,45.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:40:00,NotAtSchool,70,150,No
+255,2024-12-18,1900-01-01 13:50:00,Bolus,Food,Standard,255.0,5.87,5.87,0.0,Stopped Alarm,30.0,110.0,17.0,4.0,Weekday,Holiday,0 days 13:50:00,NotAtSchool,70,150,No
+278,2024-12-18,1900-01-01 13:55:00,Bolus,Food,Standard,278.0,0.5,0.5,0.0,Completed,2.0,110.0,17.0,4.0,Weekday,Holiday,0 days 13:55:00,NotAtSchool,70,150,No
+128,2024-12-18,1900-01-01 20:15:00,Bolus,Food / Correction,Standard,135.0,20.0,19.1,0.84,Completed,80.0,110.0,17.0,4.0,Weekday,Holiday,0 days 20:15:00,NotAtSchool,70,150,Yes
+164,2024-12-19,1900-01-01 09:05:00,Bolus,Food / Correction,Standard,164.0,10.1,9.03,1.08,Stopped Alarm,40.0,110.0,17.0,4.0,Weekday,Holiday,0 days 09:05:00,NotAtSchool,70,150,No
+136,2024-12-19,1900-01-01 18:25:00,Bolus,Food / Correction,Standard,136.0,16.5,15.0,1.52,Completed,60.0,110.0,17.0,4.0,Weekday,Holiday,0 days 18:25:00,NotAtSchool,70,150,Yes
+107,2024-12-20,1900-01-01 13:10:00,Bolus,Food,Standard,107.0,19.8,19.8,0.0,Completed,80.0,110.0,17.0,4.0,Weekday,Holiday,0 days 13:10:00,NotAtSchool,70,150,Yes
+133,2024-12-20,1900-01-01 20:45:00,Bolus,Food / Correction,Standard,133.0,11.3,10.0,1.35,Completed,40.0,110.0,17.0,4.0,Weekday,Holiday,0 days 20:45:00,NotAtSchool,70,150,Yes
+108,2024-12-21,1900-01-01 08:35:00,Bolus,Food,Standard,0.0,17.5,17.5,0.0,Completed,70.0,110.0,17.0,4.0,Weekend,Holiday,0 days 08:35:00,NotAtSchool,70,150,Yes
+152,2024-12-21,1900-01-01 09:45:00,Bolus,Food,Standard,142.0,9.99,9.99,0.0,Completed,40.0,110.0,17.0,4.0,Weekend,Holiday,0 days 09:45:00,NotAtSchool,70,150,No
+179,2024-12-21,1900-01-01 15:30:00,Bolus,Food,Standard,0.0,17.5,17.5,0.0,Completed,70.0,110.0,17.0,4.0,Weekend,Holiday,0 days 15:30:00,NotAtSchool,70,150,No
+287,2024-12-22,1900-01-01 21:45:00,Bolus,Food / Correction,Standard,299.0,11.1,10.0,1.09,Completed,40.0,110.0,17.0,4.0,Weekend,Holiday,0 days 21:45:00,NotAtSchool,70,150,No
+147,2024-12-23,1900-01-01 14:15:00,Bolus,Food / Correction,Standard,139.0,14.1,12.4,1.62,Completed,50.0,110.0,17.0,4.0,Weekday,Holiday,0 days 14:15:00,NotAtSchool,70,150,Yes
+141,2024-12-23,1900-01-01 19:50:00,Bolus,Food / Correction,Standard,141.0,20.0,19.0,0.96,Completed,100.0,110.0,17.0,4.0,Weekday,Holiday,0 days 19:50:00,NotAtSchool,70,150,Yes
+123,2024-12-24,1900-01-01 08:05:00,Bolus,Food / Correction,Standard,123.0,13.2,12.5,0.75,Completed,50.0,110.0,17.0,4.0,Weekday,Holiday,0 days 08:05:00,NotAtSchool,70,150,Yes
+247,2024-12-24,1900-01-01 09:35:00,Bolus,Food,Standard,247.0,7.5,7.5,0.0,Completed,30.0,110.0,17.0,4.0,Weekday,Holiday,0 days 09:35:00,NotAtSchool,70,150,No
+157,2024-12-24,1900-01-01 12:20:00,Bolus,Food / Correction,Standard,157.0,13.3,12.4,0.81,Completed,50.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:20:00,NotAtSchool,70,150,No
+193,2024-12-24,1900-01-01 16:10:00,Bolus,Food / Correction,Standard,193.0,16.4,15.0,1.46,Completed,60.0,110.0,17.0,4.0,Weekday,Holiday,0 days 16:10:00,NotAtSchool,70,150,No
+254,2024-12-24,1900-01-01 19:25:00,Bolus,Food / Correction,Standard,254.0,10.9,10.0,0.97,Completed,40.0,110.0,17.0,4.0,Weekday,Holiday,0 days 19:25:00,NotAtSchool,70,150,No
+370,2024-12-24,1900-01-01 22:30:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekday,Holiday,0 days 22:30:00,NotAtSchool,70,150,No
+285,2024-12-25,1900-01-01 17:10:00,Bolus,Food / Correction,Standard,262.0,17.8,17.4,0.38,Completed,70.0,110.0,17.0,4.0,Weekday,Holiday,0 days 17:10:00,NotAtSchool,70,150,No
+182,2024-12-26,1900-01-01 11:40:00,Bolus,Food,Standard,0.0,12.5,12.5,0.0,Completed,50.0,110.0,17.0,4.0,Weekday,Holiday,0 days 11:40:00,NotAtSchool,70,150,No
+313,2024-12-26,1900-01-01 19:00:00,Bolus,Food,Standard,0.0,20.0,20.0,0.0,Completed,80.0,110.0,17.0,4.0,Weekday,Holiday,0 days 19:00:00,NotAtSchool,70,150,No
+203,2024-12-27,1900-01-01 12:50:00,Bolus,Food,Standard,0.0,19.2,19.2,0.0,Completed,77.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:50:00,NotAtSchool,70,150,No
+340,2024-12-27,1900-01-01 17:20:00,Bolus,Food / Correction,Standard,340.0,13.5,9.99,3.58,Completed,40.0,110.0,17.0,4.0,Weekday,Holiday,0 days 17:20:00,NotAtSchool,70,150,No
+150,2024-12-28,1900-01-01 14:05:00,Bolus,Food,Standard,145.0,12.5,12.5,0.0,Completed,50.0,110.0,17.0,4.0,Weekend,Holiday,0 days 14:05:00,NotAtSchool,70,150,Yes
+364,2024-12-28,1900-01-01 18:00:00,Bolus,Food / Correction,Standard,353.0,13.0,12.4,0.52,Completed,50.0,110.0,17.0,4.0,Weekend,Holiday,0 days 18:00:00,NotAtSchool,70,150,No
+343,2024-12-28,1900-01-01 20:20:00,Bolus,Food,Standard,335.0,20.0,20.0,0.0,Completed,80.0,110.0,17.0,4.0,Weekend,Holiday,0 days 20:20:00,NotAtSchool,70,150,No
+179,2024-12-29,1900-01-01 14:20:00,Bolus,Food / Correction,Standard,177.0,8.09,7.5,0.58,Completed,30.0,110.0,17.0,4.0,Weekend,Holiday,0 days 14:20:00,NotAtSchool,70,150,No
+253,2024-12-29,1900-01-01 16:25:00,Bolus,Food / Correction,Standard,256.0,10.1,9.99,0.19,Completed,40.0,110.0,17.0,4.0,Weekend,Holiday,0 days 16:25:00,NotAtSchool,70,150,No
+269,2024-12-29,1900-01-01 21:55:00,Bolus,Food / Correction,Standard,264.0,7.79,7.5,0.29,Completed,30.0,110.0,17.0,4.0,Weekend,Holiday,0 days 21:55:00,NotAtSchool,70,150,No
+282,2024-12-31,1900-01-01 14:30:00,Bolus,Food / Correction,Standard,266.0,13.8,12.4,1.33,Completed,50.0,110.0,17.0,4.0,Weekday,Holiday,0 days 14:30:00,NotAtSchool,70,150,No
+372,2024-12-31,1900-01-01 17:10:00,Bolus,Food / Correction,Standard,369.0,18.6,17.5,1.12,Completed,70.0,110.0,17.0,4.0,Weekday,Holiday,0 days 17:10:00,NotAtSchool,70,150,No
+372,2024-12-31,1900-01-01 20:50:00,Bolus,Food / Correction,Standard,359.0,13.2,7.5,5.78,Completed,30.0,110.0,17.0,4.0,Weekday,Holiday,0 days 20:50:00,NotAtSchool,70,150,No
+299,2024-12-31,1900-01-01 22:25:00,Bolus,Food,Standard,280.0,10.0,10.0,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Holiday,0 days 22:25:00,NotAtSchool,70,150,No
+285,2025-01-01,1900-01-01 01:15:00,Bolus,Food / Correction,Standard,292.0,14.6,13.6,0.97,Completed,60.0,110.0,20.0,4.4,Weekday,Holiday,0 days 01:15:00,NotAtSchool,70,150,No
+273,2025-01-01,1900-01-01 13:15:00,Bolus,Food / Correction,Standard,244.0,20.0,17.0,2.91,Completed,80.0,110.0,17.0,4.0,Weekday,Holiday,0 days 13:15:00,NotAtSchool,70,150,No
+394,2025-01-01,1900-01-01 14:15:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekday,Holiday,0 days 14:15:00,NotAtSchool,70,150,No
+249,2025-01-02,1900-01-01 01:55:00,Bolus,Food,Standard,247.0,6.81,6.81,0.0,Completed,30.0,110.0,20.0,4.4,Weekday,Holiday,0 days 01:55:00,NotAtSchool,70,150,No
+160,2025-01-02,1900-01-01 12:15:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:15:00,NotAtSchool,70,150,No
+198,2025-01-03,1900-01-01 12:10:00,Bolus,Food / Correction,Standard,195.0,17.9,17.4,0.47,Completed,70.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:10:00,NotAtSchool,70,150,No
+241,2025-01-03,1900-01-01 12:45:00,Bolus,Food,Standard,255.0,5.0,5.0,0.0,Completed,20.0,110.0,17.0,4.0,Weekday,Holiday,0 days 12:45:00,NotAtSchool,70,150,No
+295,2025-01-03,1900-01-01 15:40:00,Bolus,Food,Standard,300.0,7.5,7.5,0.0,Completed,30.0,110.0,17.0,4.0,Weekday,Holiday,0 days 15:40:00,NotAtSchool,70,150,No
+171,2025-01-04,1900-01-01 15:20:00,Bolus,Food,Standard,0.0,17.5,17.5,0.0,Completed,70.0,110.0,17.0,4.0,Weekend,Holiday,0 days 15:20:00,NotAtSchool,70,150,No
+275,2025-01-04,1900-01-01 18:10:00,Bolus,Food,Standard,260.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekend,Holiday,0 days 18:10:00,NotAtSchool,70,150,No
+335,2025-01-04,1900-01-01 20:35:00,Bolus,Food,Standard,294.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekend,Holiday,0 days 20:35:00,NotAtSchool,70,150,No
+334,2025-01-04,1900-01-01 22:30:00,Bolus,Food / Correction,Standard,327.0,12.4,10.0,2.41,Completed,40.0,110.0,17.0,4.0,Weekend,Holiday,0 days 22:30:00,NotAtSchool,70,150,No
+360,2025-01-05,1900-01-01 16:25:00,Bolus,Food / Correction,Standard,360.0,20.0,14.5,5.45,Completed,80.0,110.0,17.0,4.0,Weekend,Holiday,0 days 16:25:00,NotAtSchool,70,150,No
+260,2025-01-05,1900-01-01 22:40:00,Bolus,Food,Standard,260.0,7.5,7.5,0.0,Completed,30.0,110.0,17.0,4.0,Weekend,Holiday,0 days 22:40:00,NotAtSchool,70,150,No
+268,2025-01-06,1900-01-01 10:15:00,Bolus,Food,Standard,233.0,7.5,7.5,0.0,Completed,30.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 10:15:00,AtSchool,70,150,No
+245,2025-01-06,1900-01-01 13:00:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 13:00:00,AtSchool,70,150,No
+256,2025-01-06,1900-01-01 18:15:00,Bolus,Food,Standard,257.0,9.99,9.99,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 18:15:00,NotAtSchool,70,150,No
+144,2025-01-07,1900-01-01 16:10:00,Bolus,Food / Correction,Standard,139.0,15.4,14.9,0.42,Completed,60.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 16:10:00,NotAtSchool,70,150,Yes
+248,2025-01-07,1900-01-01 18:55:00,Bolus,Food,Standard,242.0,10.0,10.0,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 18:55:00,NotAtSchool,70,150,No
+235,2025-01-07,1900-01-01 23:05:00,Bolus,Food,Standard,233.0,3.0,3.0,0.0,Completed,12.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 23:05:00,NotAtSchool,70,150,No
+216,2025-01-08,1900-01-01 18:45:00,Bolus,Food / Correction,Standard,219.0,11.3,10.0,1.36,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 18:45:00,NotAtSchool,70,150,No
+215,2025-01-09,1900-01-01 06:40:00,Bolus,Food / Correction,Standard,227.0,14.5,13.6,0.89,Completed,60.0,110.0,20.0,4.4,Weekday,Not Holiday,0 days 06:40:00,NotAtSchool,70,150,No
+236,2025-01-09,1900-01-01 08:05:00,Bolus,Food,Standard,221.0,5.0,5.0,0.0,Completed,20.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 08:05:00,AtSchool,70,150,No
+184,2025-01-09,1900-01-01 15:25:00,Bolus,Food / Correction,Standard,182.0,8.36,7.49,0.87,Completed,30.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 15:25:00,NotAtSchool,70,150,No
+271,2025-01-09,1900-01-01 17:25:00,Bolus,Food / Correction,Standard,257.0,18.6,15.0,3.64,Completed,60.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 17:25:00,NotAtSchool,70,150,No
+272,2025-01-09,1900-01-01 22:50:00,Bolus,Food / Correction,Standard,274.0,9.26,7.49,1.76,Completed,30.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 22:50:00,NotAtSchool,70,150,No
+274,2025-01-09,1900-01-01 23:10:00,Bolus,Food,Standard,270.0,7.5,7.5,0.0,Completed,30.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 23:10:00,NotAtSchool,70,150,No
+301,2025-01-10,1900-01-01 09:25:00,Bolus,Food / Correction,Standard,306.0,11.4,10.0,1.49,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 09:25:00,AtSchool,70,150,No
+257,2025-01-10,1900-01-01 12:30:00,Bolus,Food / Correction,Standard,242.0,17.6,14.9,2.65,Completed,60.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 12:30:00,AtSchool,70,150,No
+270,2025-01-10,1900-01-01 15:25:00,Bolus,Food / Correction,Standard,265.0,10.9,10.0,0.98,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 15:25:00,NotAtSchool,70,150,No
+236,2025-01-10,1900-01-01 17:40:00,Bolus,Food / Correction,Standard,240.0,10.4,9.99,0.5,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 17:40:00,NotAtSchool,70,150,No
+238,2025-01-10,1900-01-01 17:45:00,Bolus,Food,Standard,236.0,17.5,17.5,0.0,Completed,70.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 17:45:00,NotAtSchool,70,150,No
+259,2025-01-10,1900-01-01 18:05:00,Bolus,Food,Standard,266.0,10.0,10.0,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 18:05:00,NotAtSchool,70,150,No
+306,2025-01-10,1900-01-01 20:10:00,Bolus,Food,Standard,278.0,9.99,9.99,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 20:10:00,NotAtSchool,70,150,No
+401,2025-01-10,1900-01-01 23:10:00,Bolus,Food,Standard,0.0,20.0,20.0,0.0,Completed,100.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 23:10:00,NotAtSchool,70,150,No
+353,2025-01-11,1900-01-01 00:25:00,Bolus,Food,Standard,339.0,9.09,9.09,0.0,Completed,40.0,110.0,20.0,4.4,Weekend,Not Holiday,0 days 00:25:00,NotAtSchool,70,150,No
+128,2025-01-11,1900-01-01 08:25:00,Bolus,Food,Standard,0.0,15.0,15.0,0.0,Completed,60.0,110.0,17.0,4.0,Weekend,Not Holiday,0 days 08:25:00,NotAtSchool,70,150,Yes
+177,2025-01-11,1900-01-01 10:10:00,Bolus,Food,Standard,180.0,12.5,12.5,0.0,Completed,50.0,110.0,17.0,4.0,Weekend,Not Holiday,0 days 10:10:00,NotAtSchool,70,150,No
+229,2025-01-11,1900-01-01 17:00:00,Bolus,Food / Correction,Standard,234.0,12.8,12.5,0.33,Completed,50.0,110.0,17.0,4.0,Weekend,Not Holiday,0 days 17:00:00,NotAtSchool,70,150,No
+218,2025-01-11,1900-01-01 18:50:00,Bolus,Food,Standard,207.0,7.49,7.49,0.0,Completed,30.0,110.0,17.0,4.0,Weekend,Not Holiday,0 days 18:50:00,NotAtSchool,70,150,No
+308,2025-01-11,1900-01-01 23:35:00,Bolus,Food / Correction,Standard,313.0,17.0,12.4,4.59,Completed,50.0,110.0,17.0,4.0,Weekend,Not Holiday,0 days 23:35:00,NotAtSchool,70,150,No
+246,2025-01-13,1900-01-01 19:15:00,Bolus,Food,Extended,0.0,20.0,20.0,0.0,Completed,80.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 19:15:00,NotAtSchool,70,150,No
+345,2025-01-13,1900-01-01 20:15:00,Bolus,Food,Standard,0.0,12.5,12.5,0.0,Completed,50.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 20:15:00,NotAtSchool,70,150,No
+381,2025-01-13,1900-01-01 22:20:00,Bolus,Food / Correction,Standard,359.0,17.5,12.5,5.01,Completed,50.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 22:20:00,NotAtSchool,70,150,No
+368,2025-01-13,1900-01-01 22:30:00,Bolus,Food,Standard,373.0,14.5,14.5,0.0,Completed,58.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 22:30:00,NotAtSchool,70,150,No
+257,2025-01-14,1900-01-01 06:40:00,Bolus,Food,Standard,231.0,10.0,10.0,0.0,Completed,44.0,110.0,20.0,4.4,Weekday,Not Holiday,0 days 06:40:00,NotAtSchool,70,150,No
+257,2025-01-14,1900-01-01 13:25:00,Bolus,Food / Correction,Standard,251.0,10.2,9.99,0.22,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 13:25:00,AtSchool,70,150,No
+264,2025-01-14,1900-01-01 14:55:00,Bolus,Food,Standard,270.0,10.0,10.0,0.0,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 14:55:00,NotAtSchool,70,150,No
+329,2025-01-15,1900-01-01 22:20:00,Bolus,Food / Correction,Standard,350.0,16.5,9.99,6.55,Completed,40.0,110.0,17.0,4.0,Weekday,Not Holiday,0 days 22:20:00,NotAtSchool,70,150,No
+138,2025-01-16,1900-01-01 05:55:00,Bolus,Food,Standard,0.0,11.3,11.3,0.0,Completed,50.0,110.0,20.0,4.4,Weekday,Not Holiday,0 days 05:55:00,NotAtSchool,70,150,Yes
