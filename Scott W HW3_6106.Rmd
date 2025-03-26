@@ -1,0 +1,470 @@
+---
+title: "HomeWork 3"
+output: 
+  html_document:
+    toc: true # table of content true
+    toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    df_print: paged
+  # 
+  # number_sections: true  ## if you want number sections at each table header
+  # theme: united  # many options for theme, this one is my favorite.
+  # highlight: tango  # specifies the syntax highlighting style
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#### We would like to include some instructions regarding submission of problem sets to be able to fairly, consistently and efficiently grade your assignments.
+
+#### 1. Please submit just one document this document can be an .R script or a format that allows evaluation of your code and data (Jupyter, python script, etc) with all the necessary text (answers, discussions, analysis) which can be added to the script as comments (remember that a comment starts with the # symbol in R)
+
+#### 2.Once you have solved a problem with the code and the result needs to be printed by just calling the variable created. For example, if you are calculating the mean of a distribution and save the result as variable a = mean(x) then the next line needs to be a call to a, either print(a) or just a, so that when we run the code to check on your work we can evaluate your responses correctly.
+
+#### 3.The final answer needs to be written down as a comment; just having the final number as an answer will result in point deductions as in most cases the question is not asking for a number but for a statistical analysis. Eg. The t-test had a p-value of 0.001 t = 4.6 n = 30 (this is the correct way to present the results from a t-test, you can also include the 95CI), which indicates that we reject the null hypothesis that the mean blood pressure in treatment 1 is the same as in the placebo group.
+
+#### 4.We will not accept screenshots of code or results.
+
+#### 5.If there are plots in the results, you don’t need to print the plots using a different document, just have the code and we will run it and see the plot that you created.
+
+#### 6.It is ok to work together and copy code from exercises, peers, class examples, etc, but it is not ok to copy identical workflows and answers from classmates. Copying another’s answers verbatim is considered plagiarism and will result in a zero for the assignment as well as other potential consequences according to Program and University guidelines. It is ok to use LLMs to help with the code, but not for the analysis, this should be your own.
+
+#### 7.The penalty for turning in a late assignment is 10% reduction in grade per day (see course syllabus). 
+<hr class="rounded">
+
+# HomeWork 3
+
+
+## 1.
+
+### A biomedical informatics researcher is investigating the relationship between smoking and multiple biological measurements. We want to compare the mean age for both smokers and non-smokers and we want to sample participants from each group proportionally to their representation in the population. The dataset smoking.csv contains this information, with two columns: "age" (numeric) and "smoking" (factor with 2 levels "0" and "1" [yes/no]). Answer the following questions using the concepts seen in class.
+
+#### 1. **Point Estimate:**
+####   Calculate the mean age for the entire population based on the collected sample.
+```{r}
+setwd("C:/Users/scott/school/BMI6106")
+#list.files()
+#reading in file
+smoking_table = read.table("smoking.csv", sep = ",", header = T)
+summary(smoking_table)
+```
+```{r}
+pop_mean_age <- mean(smoking_table$age)
+pop_mean_age
+```
+## Q1.1 -- The population mean age is 44.18
+
+* Why is the sample mean considered an unbiased estimator of the population mean?
+
+## since a sample mean is the sum of a measured variable from a random sample of
+## a population, its expected value is the population mean
+
+* What are some potential sources of bias when estimating the mean age in **this** dataset?
+
+## this dataset the minimum age is 20 and I presume it comes from data collected 
+## at a medical facility only including adults.  So it may not be representative of
+## the population of people as a whole since its likely a convenience sample and also
+## likely only those that have visited that medical facility
+
+#### 2. **Random Sampling:**
+####   Randomly select a subset of 50 patients from the dataset without replacement. Calculate the mean age for this subset.
+```{r}
+set.seed(786)
+smoke_sample <- smoking_table[sample(nrow(smoking_table), size = 50, replace = FALSE), ]
+#head(smoke_sample)
+smpl_mean_age <- mean(smoke_sample$age)
+smpl_mean_age
+```
+## Q1.2 sample mean age is 43.4
+
+* What are the potential consequences of sampling with versus without replacement?
+
+## if you sample with replacement, you have the chance of selecting the same sample
+## multiple times and therefore not getting as accurate of estimates and lower 
+## variance than would be in the population.  Its certainly easier to do with 
+## replacement and doesnt matter that much if the population size is large.
+
+#### 3. **Resampling:**
+####   Perform bootstrapping on the entire dataset to estimate the sampling distribution of the mean age for the cohort Use 1000 bootstrap samples and calculate the mean age for each sample.
+```{r}
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample <- numeric()
+
+# Take 1,000 random samples of size n = 50
+for (i in 1:1000) {
+  smoke_boot_sample[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+smoke_boot_sample
+
+```
+```{r}
+# Calculate mean of sample means - just because I want to see how close it is to pop mean
+smoke_boot_sample_mean <- mean(smoke_boot_sample)
+smoke_boot_sample_mean
+```
+* How does the number of bootstrap samples affect the accuracy of the estimated distribution? Demonstrate with this data. (Tip plot of means v # bootstrap samples)
+
+```{r}
+
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample50 <- numeric()
+
+# Take 50 random samples of size n = 50
+for (i in 1:50) {
+  smoke_boot_sample50[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+#smoke_boot_sample50
+
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample200 <- numeric()
+
+# Take 200 random samples of size n = 50
+for (i in 1:200) {
+  smoke_boot_sample200[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+#smoke_boot_sample200
+
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample500 <- numeric()
+
+# Take 500 random samples of size n = 50
+for (i in 1:500) {
+  smoke_boot_sample500[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+#smoke_boot_sample500
+
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample1000 <- numeric()
+
+# Take 1,000 random samples of size n = 50
+for (i in 1:1000) {
+  smoke_boot_sample1000[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+#smoke_boot_sample1000
+
+set.seed(123)
+# Create an empty vector to hold sample means
+smoke_boot_sample10000 <- numeric()
+
+# Take 10,000 random samples of size n = 50
+for (i in 1:10000) {
+  smoke_boot_sample10000[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+#smoke_boot_sample10000
+
+```
+
+```{r}
+
+# Creating histograms to visualize the sampling distribution of sample means
+hist(smoke_boot_sample50, col = 'steelblue', xlab = 'Age', main = 'Bootstaps = 50')
+
+# Creating histograms to visualize the sampling distribution of sample means
+hist(smoke_boot_sample200, col = 'steelblue', xlab = 'Age', main = 'Bootstaps = 200')
+
+# Creating histograms to visualize the sampling distribution of sample means
+hist(smoke_boot_sample500, col = 'steelblue', xlab = 'Age', main = 'Bootstaps = 500')
+
+# Creating histograms to visualize the sampling distribution of sample means
+hist(smoke_boot_sample1000, col = 'steelblue', xlab = 'Age', main = 'Bootstaps = 1000')
+
+# Creating histograms to visualize the sampling distribution of sample means
+hist(smoke_boot_sample10000, col = 'steelblue', xlab = 'Age', main = 'Bootstaps = 10000')
+
+```
+## Q1.3 - Increasing the number of bootstraps makes the distribution of the sample
+## means become more normally distributed
+
+#### 4. **Confidence Intervals:**
+####   Calculate a 95% confidence interval for the population mean age level using the bootstrap distribution obtained in the previous step.
+
+```{r}
+install.packages("mosaic")
+library(mosaic)
+```
+```{r}
+
+# calculate mean of our bootstrap sample of 1000
+boot_mean <- mean(smoke_boot_sample1000)
+
+# calculate the SE from the sample
+boot_se <- sd(smoke_boot_sample1000)
+
+# get the critical z score for a 95% CI
+z_crit <- qnorm(0.975)  # which is 1.96
+
+# compute the confidence interval
+ci_lower <- boot_mean - z_crit * boot_se
+ci_upper <- boot_mean + z_crit * boot_se
+
+print(boot_mean)
+print(ci_lower)
+print(ci_upper)
+```
+
+## Q1.4a Mean is 44.25 with lower bound 40.83 and upper 47.67
+
+```{r}
+set.seed(673)
+# Create an empty vector to hold sample means
+smoke_boot_sample1000_50 <- numeric()
+
+# Take 1000 random samples of size n = 50
+for (i in 1:1000) {
+  smoke_boot_sample1000_50[i] <- mean(sample(smoking_table$age, 50, replace = TRUE))
+}
+
+# Create an empty vector to hold sample means
+smoke_boot_sample1000_100 <- numeric()
+
+# Take 1000 random samples of size n = 100
+for (i in 1:1000) {
+  smoke_boot_sample1000_100[i] <- mean(sample(smoking_table$age, 100, replace = TRUE))
+}
+
+# Create an empty vector to hold sample means
+smoke_boot_sample1000_1000 <- numeric()
+
+# Take 1000 random samples of size n = 1000
+for (i in 1:1000) {
+  smoke_boot_sample1000_1000[i] <- mean(sample(smoking_table$age, 1000, replace = TRUE))
+}
+```
+
+```{r}
+# calculate mean of our 1000 bootstrap samples with 50 in each
+boot_mean_50 <- mean(smoke_boot_sample1000_50)
+
+# calculate the SE from the sample
+boot_se_50 <- sd(smoke_boot_sample1000_50)
+
+# get the critical z score for a 95% CI
+z_crit <- qnorm(0.975)  # which is 1.96
+
+# compute the confidence interval
+ci_lower_50 <- boot_mean_50 - z_crit * boot_se_50
+ci_upper_50 <- boot_mean_50 + z_crit * boot_se_50
+
+print(boot_mean_50)
+print(ci_lower_50)
+print(ci_upper_50)
+
+```
+
+```{r}
+# calculate mean of our 1000 bootstrap samples with 100 in each
+boot_mean_100 <- mean(smoke_boot_sample1000_100)
+
+# calculate the SE from the sample
+boot_se_100 <- sd(smoke_boot_sample1000_100)
+
+# get the critical z score for a 95% CI
+z_crit <- qnorm(0.975)  # which is 1.96
+
+# compute the confidence interval
+ci_lower_100 <- boot_mean_100 - z_crit * boot_se_100
+ci_upper_100 <- boot_mean_100 + z_crit * boot_se_100
+
+print(boot_mean_100)
+print(ci_lower_100)
+print(ci_upper_100)
+```
+
+```{r}
+# calculate mean of our 1000 bootstrap samples with 1000 in each
+boot_mean_1000 <- mean(smoke_boot_sample1000_1000)
+
+# calculate the SE from the sample
+boot_se_1000 <- sd(smoke_boot_sample1000_1000)
+
+# get the critical z score for a 95% CI
+z_crit <- qnorm(0.975)  # which is 1.96
+
+# compute the confidence interval
+ci_lower_1000 <- boot_mean_1000 - z_crit * boot_se_1000
+ci_upper_1000 <- boot_mean_1000 + z_crit * boot_se_1000
+
+print(boot_mean_1000)
+print(ci_lower_1000)
+print(ci_upper_1000)
+```
+
+* How does the width of a confidence interval change with different sample sizes?
+
+## Q1.4b - the width of the confidence intervals continues to reduce with larger sample sizes
+## shown above is increasing sample sizes from 50 to 100 to 1000. With a sample size of 50
+## the width of the interval is over 6.5. When sample size is 1000 the width is only 0.7
+
+#### 5. **Standard Error of the Mean (SEM):**
+####   Calculate the standard error of the mean (SEM) of your estimate.
+
+```{r}
+# calculate the SE from the sample
+boot_se_1000 <- sd(smoke_boot_sample1000_50)
+```
+
+* How is the standard error of the mean (SEM) different from the standard deviation?
+
+## Q1.5a - the standard error of the mean is different in that we need to divide by the
+## square root of the sample size to get the SE
+
+* Why is SEM a useful measure in hypothesis testing?
+
+## Q1.5b - Since the SEM is instrumental in showing the magnitude of variation in the estimate 
+## we are evaluating in a hypothesis test, it helps to come up with range for expected values
+## to see in a sample based on the sample size.  higher sample sizes reducing the SEM
+
+## 2. 
+
+### Markov Chain: physical exercise training method A is used only 5% of the time, a person using method A will stay with this method 85% of the time, and a person not using method A will switch to method A about 65% time. At the beginning of the experiment only 5% of people used method A.
+
+#### 1. Generate a transition matrix for this Markov chain
+
+## Q2.1
+
+```{r echo=TRUE}
+library(knitr) #load the knitr library
+# put the probabiliites into a transition matrix element with matrix function
+transition_matrix <- matrix(c(0.85, 0.15, 0.65, 0.35), nrow=2, byrow=TRUE,
+dimnames = list(c("Training A", "Training Other"),c("Training A", "Training Other")))
+print(transition_matrix)
+```
+#### 2. Generate a transition plot (using R or by hand as an image it’s valid)
+
+## Q2.2 draw image in Excel and copy image into png file.  Use knitr to include file
+```{r}
+knitr::include_graphics("C:/Users/scott/school/BMI6106/transition diagram.png")
+```
+
+#### 3. Plot the change in the probabilities over time for both methods until the 10th time unit.
+
+## Q2.3a
+
+```{r}
+library(ggplot2) #load ggplot2 library
+
+#put the transition matrix into P object
+P <- matrix(c(0.85, 0.15, 0.35, 0.65), nrow = 2, byrow = TRUE,
+dimnames = list(c("TrainA", "TrainOther"), c("TrainA", "TrainOther")))
+
+#initial probabilities
+P0 <- c(0.05, 0.95)
+
+#num of transitions
+n_trans <- 10
+
+#capture probabilities 
+probabilities <- data.frame(Time=0, TrainA=P0[1], TrainOther=P0[2])
+
+#compute probabilities at each transition
+for (t in 1:n_trans) {
+  P0 <- P0 %*% P  #update probs with matrix multiplication
+  probabilities <- rbind(probabilities, data.frame(Time=t, TrainA=P0[1], TrainOther=P0[2]))
+}
+
+#reshape data for ggplot
+library(tidyr) #load the tidyr library
+
+prob_long <- pivot_longer(probabilities, cols = c("TrainA", "TrainOther"), 
+names_to = "Train", values_to = "Probability")
+
+#plot probabilities over time
+ggplot(prob_long, aes(x=Time, y=Probability, color=Train)) + geom_line(size = 1.2) + geom_point() + theme_minimal() + labs(title = "Change in Training Probabilities Over 10 steps",
+ x = "Time Steps", y = "Probability", color = "Train")
+
+```
+
+* What are the key properties of a transition matrix in a Markov chain?
+
+## Q2.3b - the outcome of each experiment has to be one of a discrete state.
+## the outcome of the next state depends only on the current state and not any previous ones
+
+* What does it mean for a Markov chain to reach a steady-state distribution? When is this achieved in this analysis?
+
+## Q2.3c - A Markov chain reaches steady state when the probabilites reach a point where
+## the state are not changing from one step to the next. For this example it reaches 
+## that state right around the 7th or 8th step
+
+## 3. 
+
+### Random Walk: Another simpler example of a random walk is a one-dimensional random walk. first we place a marker at zero (our initial state), we flip a coin, if it lands on heads, the marker is moved one unit to the right (1), if it lands on tails it is moved one unit to the left.
+
+#### 1. Generate a function that randomly draws from our initial state and populates a vector with the different transitions.
+
+## Q3.1
+```{r}
+# do a function with initial value 0 and 10 steps
+randomwalk <- function(k = 10,initial.value = 0) {
+  #use rbinom function with size 1 and prob 0.5
+  samples = rbinom(k,1,0.5)
+  #change 0 to -1 to move left on random walk
+  samples[samples==0] = -1 
+  #use cumsum to get sum of all flips
+  initial.value + c(0, cumsum(samples))
+}
+walk <- randomwalk(k=10)
+walk
+```
+
+#### 2. Generate a plot that shows 500 independent one-dimensional walks, differentiating walks that end above 0 or below 0.
+
+## Q3.2
+
+```{r}
+#Plot the random walk
+
+set.seed(335) #random seed
+num_walks <- 500  #number of walks
+steps <- 10   #steps per walk
+
+walks <- data.frame(
+  Step = rep(0:steps, num_walks),  #steps to 10 for 500 walks
+  Walk = unlist(lapply(1:num_walks, function(x) randomwalk(steps))),  #all walks
+  WalkID = rep(1:num_walks, each = steps + 1)  #Unique ID for each walk
+)
+
+#identify if each walk ends above or below zero
+final_positions <- walks %>%
+  filter(Step == steps) %>%
+  mutate(EndAboveZero = case_when(
+    Walk > 0  ~ "Above Zero",
+    Walk < 0  ~ "Below Zero",
+    Walk == 0 ~ "Exactly Zero"))
+
+# Merge classification back into the dataset
+walks <- merge(walks, final_positions[, c("WalkID", "EndAboveZero")], by = "WalkID")
+
+ggplot(walks, aes(x=Step, y=Walk, group=WalkID, color=EndAboveZero)) +
+  geom_line(alpha = 0.3) +  # Make lines slightly transparent
+  scale_color_manual(values = c("Above Zero" = "green", "Below Zero" = "red",
+                                "Exactly Zero" = "black")) +
+  theme_minimal() +
+  labs(title = "500 Random Walks with 10 Steps", x = "Step", y = "Position") +
+  theme(legend.title = element_blank())  # no legend title
+
+```
+
+
+
+#### 3. What is the frequency of walks that ended in a positive cumulative count, in zero, or negative?
+
+##Q3.3a - 199 above, 188 below and 113 Exactly 
+
+```{r}
+table(final_positions$EndAboveZero)
+```
+
+* How does a random walk differ from a Markov process?
+
+## Q3.3b - the transition probability for a random walk as I understand are always 
+## equal and dont depend on the current state.  I can move left, right, forward or 
+## backward at an equal probability no matter where the current state is.  
+
+
