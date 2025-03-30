@@ -1,0 +1,95 @@
+---
+title: "Problem Set 4 Due Date Wednesday April 2rd"
+output: 
+  html_document:
+    toc: true # table of content true
+    toc_depth: 2  # upto three depths of headings (specified by #, ## and ###)
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    df_print: paged
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### We would like to include some instructions regarding submission of problem sets to be able to fairly, consistently and efficiently grade your assignments.
+
+#### 1. Please submit just one document this document can be an .R script or a format that allows evaluation of your code and data (Jupyter, python script, etc) with all the necessary text (answers, discussions, analysis) which can be added to the script as comments (remember that a comment starts with the # symbol in R)
+
+#### 2.Once you have solved a problem with the code and the result needs to be printed by just calling the variable created. For example, if you are calculating the mean of a distribution and save the result as variable a = mean(x) then the next line needs to be a call to a, either print(a) or just a, so that when we run the code to check on your work we can evaluate your responses correctly.
+
+#### 3.The final answer needs to be written down as a comment; just having the final number as an answer will result in point deductions as in most cases the question is not asking for a number but for a statistical analysis. Eg. The t-test had a p-value of 0.001 t = 4.6 n = 30 (this is the correct way to present the results from a t-test, you can also include the 95CI), which indicates that we reject the null hypothesis that the mean blood pressure in treatment 1 is the same as in the placebo group.
+
+#### 4.We will not accept screenshots of code or results.
+
+#### 5.If there are plots in the results, you don’t need to print the plots using a different document, just have the code and we will run it and see the plot that you created.
+
+#### 6.It is ok to work together and copy code from exercises, peers, class examples, etc, but it is not ok to copy identical workflows and answers from classmates. Copying another’s answers verbatim is considered plagiarism and will result in a zero for the assignment as well as other potential consequences according to Program and University guidelines. It is ok to use LLMs to help with the code, but not for the analysis, this should be your own.
+
+#### 7.The penalty for turning in a late assignment is 10% reduction in grade per day (see course syllabus). 
+
+### How long will a person live? The life expectancy dataset provided by WHO (World Health Organization) is an attempt to answer this question:
+
+#### Independent Variables (predictors)
+
+#### Adult.Mortality
+#### infant.deaths
+#### Alcohol
+#### percentage.expenditure
+#### Hepatitis.B
+#### Measles
+#### BMI
+#### under.five.deaths
+#### Polio
+#### Total.expenditure
+#### Diphtheria
+#### HIV.AIDS
+#### GDP
+#### Population
+#### Income.composition.of.resources
+#### Schooling
+
+### Outcome (dependent variable)
+
+#### Life.expectancy 
+
+## Problem Set 4 (100 points)
+
+#### We are going to use the life expectancy dataset to generate a linear model that predicts life expectancy using the 16 predictors from the dataset
+
+#### This data has been subsetted to include only continuous data.
+
+```{r load}
+setwd("/Users/javier/Documents/Jupyter/BMI_6106_2023/HomeWorks/HW4")
+expectancy = read.csv("Life_Expectancy_Data.csv")
+```
+
+
+#### Because this data contains missing data we are going to impute the dataset by using the means of each column. Imputation is the process of replacing missing data with some value. There are many techniques for imputation, but we are going to simply add the median of the column to each missing data, that way we wouldn’t be creating a statistical bias by skewing the distribution. 
+
+```{r impute}
+##mean imputation
+for(i in 1:ncol(expectancy)) {
+  expectancy[ , i][is.na(expectancy[ , i])] <- median(expectancy[ , i], na.rm=TRUE)
+}
+```
+
+## Premise
+### Your job for this assignment is to use the statistical tools seen in class to evaluate and find the best model (best predictors and their combination) that best explains the outcome variable. The assignment will be divided into three sections:
+
+#### This exercise is open ended, no correct answer, so what are we looking for in the responses?:
+
+## 1. Data Exploration (Introduction - Methods) (30 points)
+### Do a short data exploration of this dataset. Describe the most problematic aspects of the data (deviations from normality, colliniearity, skewness, etc) that could potentially affect and bias the analysis.
+
+## 2. Model Generation and Evaluation (Results) (35 points)
+### Use the tools described in class to generate a linear model that best fits the data. Remember that there are different ways to evaluate and compare the models and you have to make the decisions based on the data you have. You should use the metrics, scores and diagnostic plots that help evaluate the models seen in class.
+
+## 3. Analysis and Discussion (Conclusions) (35 points)
+### Generate a short report (a paragraph or two) about the main conclusions of your analysis, including the effect of the selected independent variables on life expectancy and under what criteria you chose those variables, and what is the interpretaion of the model you selected. Also, what kind of predictions and their utility you can make from your results.
+
+
+
