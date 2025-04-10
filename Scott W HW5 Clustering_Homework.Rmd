@@ -1,0 +1,382 @@
+---
+title: "Clustering Homework - Due April 9th"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The Breast Cancer dataset, also known as the Wisconsin Diagnostic Breast Cancer (WDBC) dataset, contains measurements from digitized images of fine needle aspirate (FNA) biopsies of breast masses. Each sample is described by 30 numeric features representing the characteristics of the cell nuclei, such as radius, texture, perimeter, area, and smoothness. The dataset includes 569 samples, each labeled as either malignant (M) or benign (B).
+
+Your job today is use the learned clustering methods in class to best describe this dataset. The Ultimate goal is to understand the classificatory power of this dataset, which variables are the most important at separating the two classes and to statistically compare multiple clustering methods.
+
+#Install packages needed 
+install.packages("factoextra")
+install.packages("Rtsne")
+install.packages("clusterCrit")
+
+### 1. Load Data 
+
+```{r}
+data <- read.csv("Breast_Cancer.csv")
+head(data)
+```
+getwd()
+setwd("C:/Users/Scott/school/BMI6106")
+data <- read.csv("Breast_Cancer.csv")
+head(data)
+
+### 2. PCA (10)
+
+#-- Scree plot
+
+# Identify the var types, removing first 
+str(data[,2:31])
+# Run PCA - removing diagnosis var in first column 
+pca_result <- prcomp(data[,2:31], scale. = TRUE) 
+
+# Load libraries
+library(ggplot2)
+library(factoextra)   # for PCA visuals
+library(tidyverse)
+
+##Scree plot
+fviz_eig(pca_result, addlabels = TRUE, ylim = c(0, 100)) +
+  ggtitle("Scree Plot - Variance Explained by Each PC")
+#first 2 explain 63%  
+  
+#-- Biplot
+fviz_pca_biplot(pca_result,
+                label = "var",  # show variable vectors
+                habillage = data$diagnosis, # color by diagnosis
+                addEllipses = TRUE, # confidence ellipses
+                col.var = "black") +
+  ggtitle("PCA Biplot by Diagnosis")
+
+
+#- Variance explained - which variables contribute the most on PC1,2?
+eig_vals <- get_eigenvalue(pca_result)
+print(eig_vals)
+#top 4 PCs make up 79.2% of variance
+
+#PCA Loadings (How much each variable contributes to each PC)
+loadings <- as.data.frame(pca_result$rotation)
+print(loadings)
+
+##Variable Contributions to Each PC (%)
+# Contributions (percent)
+contrib <- get_pca_var(pca_result)$contrib
+round(contrib, 2)
+
+##Top contributors to PC1 and PC2
+#PC1 - concave points mean, concavity mean, concave points worst
+#PC2 - fractal dimension mean, fractal dimension se, fractal dimension worst
+
+#Loadings plot
+fviz_pca_var(pca_result, col.var = "contrib") +
+  scale_color_gradient2(low = "lightblue", mid = "blue", high = "red") +
+  ggtitle("Variable Contribution to PCs")
+
+        
+#-- Confusion matrix
+# Using the first 2 principal components for clustering
+pca_data <- as.data.frame(pca_result$x[, 1:2])
+# Step 2: Run K-means on the PCA-transformed data
+set.seed(42)
+kmeans_result <- kmeans(pca_data, centers = 2,nstart = 25)
+
+pca_data$Cluster <- as.factor(kmeans_result$cluster)
+pca_data$diagnosis <- data$diagnosis
+
+###plot PCA with cluster assignments
+ggplot(pca_data, aes(PC1, PC2, color = Cluster, shape = diagnosis)) +
+  geom_point(size = 2) +
+  labs(title = "PCA + K-means Clustering on Cancer Data")
+
+
+##Confusion matrix --compare with actual diagnosis
+# Convert diagnosis to numeric labels: B = 1, M = 2
+true_labels <- as.numeric(as.factor(data$diagnosis))
+length(unique(kmeans_result$cluster))
+library(caret)
+
+predicted <- as.factor(kmeans_result$cluster)
+actual <- as.factor(true_labels)
+
+confusionMatrix(predicted, actual)
+##Accuracy : 0.9069, sensitivity 0.9552, specificity 0.8225
+
+
+### 3. t-SNE (10)
+
+# Run t-SNE
+
+library(Rtsne)
+set.seed(123)
+tsne_data <- data[,2:31] #feed in data
+
+
+#- Try different perplexities
+#perplexity 10
+tsne_result <- Rtsne(tsne_data,perplexity =10)
+tsne_df <- as.data.frame(tsne_result$Y)
+colnames(tsne_df) <- c("Dim1","Dim2")
+
+# K-means on t-SNE results
+kmeans_tsne <- kmeans(tsne_df, centers = 2) #2 for diagnosis B or M
+tsne_df$Cluster <- as.factor(kmeans_tsne$cluster)
+tsne_df$TrueLabel <- as.factor(true_labels)
+
+#- Visualize colored by true labels
+# Plot t-SNE results
+ggplot(tsne_df, aes(Dim1, Dim2, color = Cluster, shape = TrueLabel)) +
+  geom_point(size = 3) + 
+  labs(title = "t-SNE + K-means Clustering Perplexity 10")
+
+#- confusion matrix
+# t-SNE Confusion Matrix
+confusionMatrix(tsne_df$Cluster, tsne_df$TrueLabel) 
+##Accuracy : 0.7469, sensitivity 0.7087, specificity 0.8113
+
+#- Try different perplexities
+#perplexity 30
+tsne_result <- Rtsne(tsne_data,perplexity =30)
+tsne_df <- as.data.frame(tsne_result$Y)
+colnames(tsne_df) <- c("Dim1","Dim2")
+
+# K-means on t-SNE results
+kmeans_tsne <- kmeans(tsne_df, centers = 2) #2 for diagnosis B or M
+tsne_df$Cluster <- as.factor(kmeans_tsne$cluster)
+tsne_df$TrueLabel <- as.factor(true_labels)
+
+#- Visualize colored by true labels
+# Plot t-SNE results
+ggplot(tsne_df, aes(Dim1, Dim2, color = Cluster, shape = TrueLabel)) +
+  geom_point(size = 3) + 
+  labs(title = "t-SNE + K-means Clustering Perplexity 30")
+
+#- confusion matrix
+# t-SNE Confusion Matrix
+confusionMatrix(tsne_df$Cluster, tsne_df$TrueLabel) 
+##Accuracy : 0.8225, sensitivity 0.7339, specificity 0.9717
+
+#- Try different perplexities
+#perplexity 50
+tsne_result <- Rtsne(tsne_data,perplexity =50)
+tsne_df <- as.data.frame(tsne_result$Y)
+colnames(tsne_df) <- c("Dim1","Dim2")
+
+# K-means on t-SNE results
+kmeans_tsne <- kmeans(tsne_df, centers = 2) #2 for diagnosis B or M
+tsne_df$Cluster <- as.factor(kmeans_tsne$cluster)
+tsne_df$TrueLabel <- as.factor(true_labels)
+
+#- Visualize colored by true labels
+# Plot t-SNE results
+ggplot(tsne_df, aes(Dim1, Dim2, color = Cluster, shape = TrueLabel)) +
+  geom_point(size = 3) + 
+  labs(title = "t-SNE + K-means Clustering Perplexity 50")
+
+#- confusion matrix
+# t-SNE Confusion Matrix
+confusionMatrix(tsne_df$Cluster, tsne_df$TrueLabel) 
+##Accuracy : 0.8225, sensitivity 0.7339, specificity 0.9717
+
+##Both the perplexity 30 and 50 give good results with 0.8225 accuracy, sensitivity 0.7339,
+## specificity of 0.9717
+
+
+### 4. K-means Clustering (10)
+
+# Scale features
+data_scaled <- scale(data[,2:31])
+
+#- Elbow method
+
+# Elbow Method with K-means
+fviz_nbclust(data_scaled, FUN = kmeans, method = "wss") +
+  labs(title = "Elbow Method for Optimal Clusters",
+       x = "Num of Clusters (k)",
+       y = "Within Cluster Sum Squares")
+       
+#- Silhouette score
+fviz_nbclust(data_scaled, FUN = kmeans, method = "silhouette") +
+  labs(title = "Silhouette Method for Optimal Clusters",
+       x = "Num of Clusters (k)",
+       y = "Ave Silhouette Width")
+       
+#looks like 2 clusters is the way to go here
+
+#- Compare to true labels - confusion matrix
+set.seed(123)
+kmeans_result <- kmeans(data_scaled, centers = 2, nstart = 25)
+
+#try cluster prediction labels both ways and compare - in case flips clusters
+predicted1 <- as.factor(kmeans_result$cluster)
+predicted2 <- as.factor(ifelse(kmeans_result$cluster == 1, 2, 1))
+actual <- as.factor(true_labels)  
+
+conf_mat1 <- confusionMatrix(predicted1, actual)
+conf_mat2 <- confusionMatrix(predicted2, actual)
+
+print(conf_mat1)
+print(conf_mat2)
+#accuracy = 0.9104, sensitivity = 0.9608, specificity = 0.8255
+
+### 5. Hierarchical Clustering (10)
+
+#- Try different linkage methods
+#Use scaled data to compute an euclidean distance matrix
+dist_breast <- dist(data_scaled, method = "euclidean")
+
+library(gridExtra)
+# Try several linkage methods
+methods <- c("average", "single", "complete", "ward.D2")
+
+plots <- list()
+for (m in methods) {
+  hc <- hclust(dist_breast, method = m)
+  plots[[m]] <- fviz_dend(hc, k = 3, rect = TRUE, main = paste("Dendrogram -", m), cex = 0.6)
+}
+
+#- Plot dendrograms
+# Show 2x2 grid
+grid.arrange(grobs = plots, ncol = 2)
+
+##Use one of the clustering methods to cut the tree
+hc_ward <- hclust(dist_breast, method = "ward.D2")
+cluster_labels <- cutree(hc_ward, k = 2)
+table(cluster_labels, data$diagnosis)  # Compare to actual classes
+
+#- Evaluate - confusion matrix
+# Redefine cluster 1 ~ B, cluster 2 ~ M
+predicted_labels <- ifelse(cluster_labels == 1, "M", "B")
+
+confusionMatrix(as.factor(predicted_labels), as.factor(data$diagnosis))
+
+##Accuracy : 0.8805, sensitivity = 0.9440, specificity = 0.7736
+
+
+## 6. Combination of Methods (10)
+
+#- Does combining methods work better? -- Combine the methods
+#Dimensionality Reduction with PCA
+pca_result <- prcomp(data_scaled, center = TRUE, scale. = TRUE)
+pca_data <- as.data.frame(pca_result$x[, 1:2])  #first 2 PCs
+
+#Kmeans on PCA results
+kmeans_result <- kmeans(pca_data, centers = 2, nstart = 25)
+cluster_labels <- kmeans_result$cluster
+
+#Map True Labels
+true_labels <- ifelse(data$diagnosis == "M", 1, 2)
+
+#- Evaluate - confusion matrix
+#Look at confusion matrix
+confusionMatrix(as.factor(cluster_labels), as.factor(true_labels))
+
+##Accuracy : 0.9069, sensitivity = 0.8255, specificity = 0.9552
+#This is a very strong result when combining the methods
+
+## 7. Evaluation (20)
+library(cluster)
+library(clusterCrit)
+
+evaluate_clustering <- function(data, labels, true_labels) {
+  cluster_labels <- as.integer(labels)
+  sil <- silhouette(cluster_labels, dist(data))
+  crit_vals <- intCriteria(as.matrix(data), cluster_labels, c("Dunn", "Davies_Bouldin"))
+
+  confusion <- confusionMatrix(factor(cluster_labels, levels = sort(unique(cluster_labels))), factor(true_labels, levels = sort(unique(true_labels))))
+
+  list(
+    silhouette_avg = round(mean(sil[, 3]), 3),
+    dunn = round(crit_vals$dunn, 3),
+    db = round(crit_vals$davies_bouldin, 3),
+    confusion = confusion
+  )
+}
+
+# K-means
+set.seed(123)
+kmeans_result <- kmeans(data_scaled, centers = 2)
+km_eval <- evaluate_clustering(data_scaled, kmeans_result$cluster, true_labels)
+
+# Hierarchical
+hc <- hclust(dist(data_scaled), method = "ward.D2")
+hc_labels <- cutree(hc, k = 2)
+hc_eval <- evaluate_clustering(data_scaled, hc_labels, true_labels)
+
+print(km_eval)
+print(hc_eval)
+
+#- Confusion matrices comparison and analysis (why are these different?)
+
+## Since the Confusion matrices use the actual labels (M or B) in the
+## classification and use different methods to determine the clusters, they 
+## have different values for how well they predict the actual categories
+
+#- Dunn index (why are these different?)
+
+## Since Dunn index is more internal, not using the true labels, but just the 
+## intra and inter-cluster distances, they are different than confusion matrices
+## and different for each value of k chosen
+
+#- Davies-Bouldin index (why are these different?)
+
+## Davies-Bouldin is also not using the true labels, but has a different metric
+## than Dunn to get average similarity in the cluster and the ones adjacent
+
+pca <- prcomp(data_scaled)
+pca_df <- as.data.frame(pca$x[, 1:2])
+pca_df$Cluster <- as.factor(kmeans_result$cluster)
+
+ggplot(pca_df, aes(PC1, PC2, color = Cluster)) +
+  geom_point(size = 3) +
+  ggtitle("K-means Clustering Visualized in PCA Space")
+
+
+## 8. Conclusion (20)
+#- Overall conclusion of your analysis one paragraph 200 words +/- 10 words
+
+## Using each of the clustering and categorization methods with this 
+## dataset shows that there is good separation between the groupings.
+## When using a K-means clustering with k=2, we were able to get a very
+## high classification accuracy of 0.905, with sensitivity of 0.83, 
+## and specificity of 0.9496.  This demonstrates that the clustering
+## does a very good job with the actual class labels of the breast
+## cancer dataset to detect Malignant or Benign.  When looking at the
+## unsupervised learning metrics on the clustering exercises done, the
+## validation showed a silhouette score of 0.34, which is a moderate 
+## separation level between the clusters. The Dunn index of 0.06 is not
+## ideal, the clusters are not well separated.  The Davies-Bouldin 
+## index of 1.32 is a bit high, showing that the clusters are not well
+## formed.  Overall, all these results show that the clustering was 
+## able to approximate the true classes of the dataset very well, but
+## there was some overlap in the cluster space that made it difficult
+## to distinguish the clusters perfectly or not well-separated.
+
+## 9. Additional Questions (10 - 5 each)
+
+#- How many principal components are required to explain 80% of the variance?
+## we needed 4 PC to get to 80% of the variance (or at least 79.4)
+
+#- True or False: t-SNE preserves global distances between samples.
+## False 
+
+#- Why do we scale the variables in this dataset?
+## We scale the variables to be prevent variables that have higher 
+## variability from dominating the prediction. Scaling brings them
+## all to same range
+
+#- Which metric favors high separation and low intra-cluster spread?.
+## B - The Davies-Bouldin index would demonstrate this best
+
+
+#  A.  Dunn Index
+#  B.  DB index
+#  C.  Silhouette
+#  D.  Euclidean Distance
+
+```
